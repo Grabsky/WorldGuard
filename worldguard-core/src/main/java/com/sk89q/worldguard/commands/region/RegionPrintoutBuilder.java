@@ -50,6 +50,8 @@ import java.util.concurrent.Callable;
 
 import javax.annotation.Nullable;
 
+import static com.sk89q.worldedit.util.formatting.text.ComponentBuilders.text;
+
 /**
  * Create a region printout, as used in /region info to show information about
  * a region.
@@ -128,10 +130,6 @@ public class RegionPrintoutBuilder implements Callable<TextComponent> {
                 continue;
             }
 
-            if (hasFlags) {
-                builder.append(TextComponent.of(", "));
-            }
-
             RegionGroupFlag groupFlag = flag.getRegionGroupFlag();
             Object group = null;
             if (groupFlag != null) {
@@ -160,7 +158,7 @@ public class RegionPrintoutBuilder implements Callable<TextComponent> {
                     flagColor = TextColor.LIGHT_PURPLE;
                 }
             }
-            TextComponent flagText = TextComponent.of(flagString, flagColor)
+            TextComponent flagText = TextComponent.newline().append(text(" - ")).append(TextComponent.of(flagString, flagColor))
                     .append(TextComponent.of(String.valueOf(val), useColors ? TextColor.YELLOW : TextColor.WHITE));
             if (perms != null && perms.maySetFlag(region, flag)) {
                 flagText = flagText.hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Click to set flag")))
