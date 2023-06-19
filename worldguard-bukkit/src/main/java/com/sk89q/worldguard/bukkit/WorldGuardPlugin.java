@@ -157,12 +157,12 @@ public class WorldGuardPlugin extends JavaPlugin {
 
         // Register command classes
         final CommandsManagerRegistration reg = new CommandsManagerRegistration(this, commands);
-        reg.register(ToggleCommands.class);
+        // reg.register(ToggleCommands.class);
         reg.register(ProtectionCommands.class);
 
-        if (!platform.getGlobalStateManager().hasCommandBookGodMode()) {
-            reg.register(GeneralCommands.class);
-        }
+        // if (!platform.getGlobalStateManager().hasCommandBookGodMode()) {
+        //     reg.register(GeneralCommands.class);
+        // }
 
         getServer().getScheduler().scheduleSyncRepeatingTask(this, sessionManager, BukkitSessionManager.RUN_DELAY, BukkitSessionManager.RUN_DELAY);
 
