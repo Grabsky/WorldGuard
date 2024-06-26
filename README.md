@@ -1,5 +1,5 @@
 # WorldGuard Fork  
-This is a fork of **[WorldGuard](https://github.com/EngineHub/WorldGuard)** which I maintain for my server until I can fully switch to a suitable alternative.  
+This is a fork of **[WorldGuard](https://github.com/EngineHub/WorldGuard)** plugin which I maintain for my server until I can fully switch to a suitable alternative.  
 
 Artifacts can be downloaded from **[GitHub Actions](https://github.com/Grabsky/WorldGuard/actions/workflows/gradle.yml)**.
 
