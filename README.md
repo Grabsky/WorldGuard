@@ -1,47 +1,9 @@
-<h1>
-    <img src="worldguard-logo.svg" alt="WorldGuard" width="400" /> 
-</h1>
+# WorldGuard Fork  
+This is a fork of **[WorldGuard](https://github.com/EngineHub/WorldGuard)** plugin which I maintain for my server until I can fully switch to a suitable alternative.  
 
-WorldGuard lets you and players guard areas of land against griefers and undesirables, as well as tweak and disable various gameplay features of Minecraft.
+Artifacts can be downloaded from **[GitHub Actions](https://github.com/Grabsky/WorldGuard/actions/workflows/gradle.yml)**.
 
-* Block creeper and wither block damage, falling damage, etc.
-* Disable fire spread, lava fire spread, ice formation, Endermen picking up blocks, etc.
-* Blacklist certain items and blocks so they can't be used
-* Warn moderators when certain items and blocks are used
-* Protect areas of your world so only certain people can build in them
-* Set areas where PVP, TNT, mob damage, and other features are disabled
-* Protect your server from various 'exploits' like magical obsidian creation machines
-* Disable, or enable, various Minecraft features, like sponges from classic
-* Add useful commands like an immediate "STOP ALL FIRE SPREAD" command
-* Enable only features you want! Everything is off by default
-
-WorldGuard is open source and is available under the GNU Lesser
-General Public License v3.
-
-A Bukkit server implementation (such as [Paper](https://papermc.io)) and the [WorldEdit plugin](https://dev.bukkit.org/projects/worldedit) are required to use WorldGuard. You can get a release copy of WorldGuard from the [BukkitDev site](https://dev.bukkit.org/projects/worldguard).
-
-Compiling
----------
-
-The project is written for Java 17 and our build process makes use of
-[Gradle](http://gradle.org).
-
-Dependencies are automatically handled by Gradle.
-
-Contributing
-------------
-
-We happily accept contributions, especially through pull requests on GitHub.
-
-Please read CONTRIBUTING.md for important guidelines to follow.
-
-Submissions must be licensed under the GNU Lesser General Public License v3.
-
-Links
------
-
-* [Homepage](https://enginehub.org/worldguard)
-* [Discord](https://discord.gg/enginehub)
-* [Issue tracker](https://github.com/EngineHub/WorldGuard/issues)
-* [Continuous integration](https://builds.enginehub.org) [![Build Status](https://ci.enginehub.org/app/rest/builds/buildType:bt11,branch:master/statusIcon.svg)](http://ci.enginehub.org/viewType.html?buildTypeId=bt11&guest=1)
-* [End-user documentation](https://worldguard.enginehub.org/en/latest/)
+## Changes - 2024/06/26
+- Plugin does not register any commands except for the `/worldguard` and `/region`. Command aliases have been removed.
+- Command `/region info` lists each flag in a separate line.
+- Merged `1.21` support to the `master` branch.
