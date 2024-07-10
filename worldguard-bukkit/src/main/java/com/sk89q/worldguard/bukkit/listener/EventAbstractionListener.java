@@ -65,6 +65,7 @@ import org.bukkit.block.PistonMoveReaction;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Waterlogged;
 import org.bukkit.block.data.type.Dispenser;
+import org.bukkit.entity.AbstractWindCharge;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Entity;
@@ -357,6 +358,13 @@ public class EventAbstractionListener extends AbstractListener {
     @EventHandler(ignoreCancelled = true)
     public void onEntityExplode(EntityExplodeEvent event) {
         Entity entity = event.getEntity();
+        if (entity instanceof AbstractWindCharge) {
+            UseBlockEvent useEvent = new UseBlockEvent(event, create(entity), event.getLocation().getWorld(), event.blockList(), Material.AIR);
+            useEvent.getRelevantFlags().add(Flags.WIND_CHARGE_BURST);
+            useEvent.setSilent(true);
+            Events.fireBulkEventToCancel(event, useEvent);
+            return;
+        }
         Events.fireBulkEventToCancel(event, new BreakBlockEvent(event, create(entity), event.getLocation().getWorld(), event.blockList(), Material.AIR));
         if (entity instanceof Creeper) {
             Cause.untrackParentCause(entity);
