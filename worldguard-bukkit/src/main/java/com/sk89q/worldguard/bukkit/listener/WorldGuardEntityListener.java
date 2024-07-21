@@ -51,6 +51,7 @@ import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.HumanEntity;
@@ -621,6 +622,10 @@ public class WorldGuardEntityListener extends AbstractListener {
                 && ((Tameable) event.getEntity()).isTamed()) {
             return;
         }
+
+        // fork: allow SpawnReason.BREEDING
+        if (event.getSpawnReason() == SpawnReason.BREEDING)
+            return;
 
         EntityType entityType = event.getEntityType();
 
