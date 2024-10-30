@@ -62,6 +62,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.entity.Tameable;
+import org.bukkit.entity.TropicalFish;
 import org.bukkit.entity.WindCharge;
 import org.bukkit.entity.Wither;
 import org.bukkit.entity.WitherSkull;
@@ -639,8 +640,41 @@ public class WorldGuardEntityListener extends AbstractListener {
             return;
         }
 
-        // fork: allow SpawnReason.BREEDING
-        if (event.getSpawnReason() == SpawnReason.BREEDING)
+        // fork: allow some spawn reasons
+        final boolean isAllowed = switch (event.getSpawnReason()) {
+            case BREEDING,
+                 // creatures spawned from spawners
+                 SPAWNER,
+                 // creatures spawned from trial spawners
+                 TRIAL_SPAWNER,
+                 // creatures spawned using spawn eggs
+                 SPAWNER_EGG,
+                 // zombie villagers converting to villagers upon curation
+                 CURED,
+                 // allays duplicating
+                 DUPLICATION,
+                 // building golems
+                 BUILD_IRONGOLEM,
+                 BUILD_SNOWMAN,
+                 // bees leaving a beehive
+                 BEEHIVE,
+                 // villagers converting to zombie villagers upon infection
+                 INFECTION,
+                 // shearing mooshrooms to cows
+                 SHEARED,
+                 // tadpoles converting to frogs
+                 METAMORPHOSIS,
+                 // skeletons converting to strays when frozen
+                 FROZEN -> true;
+            // axolotl, fish and tadpole buckets
+            case DEFAULT -> switch (event.getEntityType()) {
+                case AXOLOTL, COD, SALMON, TROPICAL_FISH, TADPOLE -> true;
+                default -> false;
+            };
+            default -> false;
+        };
+
+        if (isAllowed == true)
             return;
 
         EntityType entityType = event.getEntityType();
