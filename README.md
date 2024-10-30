@@ -3,7 +3,9 @@ This is a fork of **[WorldGuard](https://github.com/EngineHub/WorldGuard)** plug
 
 Artifacts can be downloaded from **[GitHub Actions](https://github.com/Grabsky/WorldGuard/actions/workflows/gradle.yml)**.
 
-## Changes - 2024/06/26
+## Changes
 - Plugin does not register any commands except for the `/worldguard` and `/region`. Command aliases have been removed.
 - Command `/region info` lists each flag in a separate line.
 - Merged `1.21` support to the `master` branch.
+- Merged `1.21.3` support to the `master` branch.
+- Some spawn reasons are allowed when `mob-spawning` flag is set to `deny`.
