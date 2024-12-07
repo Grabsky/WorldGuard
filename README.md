@@ -8,4 +8,5 @@ Artifacts can be downloaded from **[GitHub Actions](https://github.com/Grabsky/W
 - Command `/region info` lists each flag in a separate line.
 - Merged `1.21` support to the `master` branch.
 - Merged `1.21.3` support to the `master` branch.
+- Merged `1.21.4` support to the `master` branch.
 - Some spawn reasons are allowed when `mob-spawning` flag is set to `deny`.
