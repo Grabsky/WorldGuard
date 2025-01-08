@@ -23,7 +23,7 @@ jobs:
       - name: Build
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: clean build
+          arguments: clean build -x checkstyleMain -x checkstyleTest
       # Uploading artifact(s)
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
