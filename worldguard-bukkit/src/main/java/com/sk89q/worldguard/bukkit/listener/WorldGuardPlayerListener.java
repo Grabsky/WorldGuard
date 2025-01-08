@@ -39,6 +39,9 @@ import com.sk89q.worldguard.session.handler.GameModeFlag;
 import com.sk89q.worldguard.util.Entities;
 import com.sk89q.worldguard.util.command.CommandFilter;
 import com.sk89q.worldguard.util.profile.Profile;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.audience.Audiences;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -429,8 +432,7 @@ public class WorldGuardPlayerListener extends AbstractListener {
             CommandFilter test = new CommandFilter(allowedCommands, blockedCommands);
 
             if (!test.apply(event.getMessage())) {
-                String message = set.queryValue(localPlayer, Flags.DENY_MESSAGE);
-                RegionProtectionListener.formatAndSendDenyMessage("use " + event.getMessage(), localPlayer, message);
+                player.sendRichMessage("<dark_gray>› <red>Komenda <yellow><command><red> nie może zostać użyta w tym miejscu.", Placeholder.unparsed("command", event.getMessage().split(" ")[0]));
                 event.setCancelled(true);
                 return;
             }
