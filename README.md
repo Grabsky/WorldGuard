@@ -10,3 +10,5 @@ Artifacts can be downloaded from **[GitHub Actions](https://github.com/Grabsky/W
 - Merged `1.21.3` support to the `master` branch.
 - Merged `1.21.4` support to the `master` branch.
 - Some spawn reasons are allowed when `mob-spawning` flag is set to `deny`.
+- Customized denied command message.
+- Removed checkstyle.
