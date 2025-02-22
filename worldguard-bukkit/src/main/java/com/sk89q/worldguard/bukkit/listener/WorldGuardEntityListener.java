@@ -666,9 +666,13 @@ public class WorldGuardEntityListener extends AbstractListener {
                  METAMORPHOSIS,
                  // skeletons converting to strays when frozen
                  FROZEN -> true;
-            // axolotl, fish and tadpole buckets
+
             case DEFAULT -> switch (event.getEntityType()) {
+                // axolotl, fish and tadpole buckets
                 case AXOLOTL, COD, SALMON, TROPICAL_FISH, TADPOLE -> true;
+                // turtle eggs
+                case TURTLE -> true;
+                // everything else
                 default -> false;
             };
             default -> false;
