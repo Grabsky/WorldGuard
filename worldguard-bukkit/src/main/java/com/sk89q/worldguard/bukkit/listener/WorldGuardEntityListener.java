@@ -63,6 +63,7 @@ import org.bukkit.entity.Projectile;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.entity.Tameable;
 import org.bukkit.entity.TropicalFish;
+import org.bukkit.entity.Turtle;
 import org.bukkit.entity.WindCharge;
 import org.bukkit.entity.Wither;
 import org.bukkit.entity.WitherSkull;
@@ -666,12 +667,12 @@ public class WorldGuardEntityListener extends AbstractListener {
                  METAMORPHOSIS,
                  // skeletons converting to strays when frozen
                  FROZEN -> true;
+            // turtles via turtle eggs
+            case EGG -> event.getEntityType() == EntityType.TURTLE;
 
             case DEFAULT -> switch (event.getEntityType()) {
                 // axolotl, fish and tadpole buckets
                 case AXOLOTL, COD, SALMON, TROPICAL_FISH, TADPOLE -> true;
-                // turtle eggs
-                case TURTLE -> true;
                 // everything else
                 default -> false;
             };
