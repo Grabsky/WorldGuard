@@ -23,6 +23,7 @@ import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.bukkit.util.PaperInterop;
 import com.sk89q.worldguard.session.MoveType;
 import com.sk89q.worldguard.session.Session;
 import io.papermc.lib.PaperLib;
@@ -161,7 +162,7 @@ public class PlayerMoveListener extends AbstractListener {
             BukkitAdapter.adapt(event.getPlayer().getLocation()), MoveType.OTHER_CANCELLABLE); // white lie
         if (loc != null) {
             if (getPlugin().isFolia()) {
-                PaperLib.teleportAsync(player, BukkitAdapter.adapt(loc));
+                PaperInterop.teleportAsync(player, BukkitAdapter.adapt(loc));
             } else {
                 player.teleport(BukkitAdapter.adapt(loc));
             }
@@ -180,7 +181,7 @@ public class PlayerMoveListener extends AbstractListener {
      */
     private void teleport(Entity entity, Location location) {
         if (getPlugin().isFolia()) {
-            PaperLib.teleportAsync(entity, location);
+            PaperInterop.teleportAsync(entity, location);
         } else {
             entity.teleport(location);
         }

@@ -25,10 +25,10 @@ import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.bukkit.util.Entities;
+import com.sk89q.worldguard.bukkit.util.PaperInterop;
 import com.sk89q.worldguard.config.WorldConfiguration;
 import com.sk89q.worldguard.session.MoveType;
 import com.sk89q.worldguard.util.Locations;
-import io.papermc.lib.PaperLib;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Vehicle;
@@ -69,7 +69,7 @@ public class WorldGuardVehicleListener extends AbstractListener {
                             .testMoveTo(localPlayer, BukkitAdapter.adapt(to), MoveType.RIDE)) != null) {
                         vehicle.setVelocity(new Vector(0, 0, 0));
                         if (getPlugin().isFolia()) {
-                            PaperLib.teleportAsync(vehicle, from);
+                            PaperInterop.teleportAsync(vehicle, from);
                         } else {
                             vehicle.teleport(from);
                         }
@@ -77,7 +77,7 @@ public class WorldGuardVehicleListener extends AbstractListener {
                             Vector dir = player.getLocation().getDirection();
                             org.bukkit.Location playerTeleportLocation = BukkitAdapter.adapt(lastValid).setDirection(dir);
                             if (getPlugin().isFolia()) {
-                                PaperLib.teleportAsync(player, playerTeleportLocation);
+                                PaperInterop.teleportAsync(player, playerTeleportLocation);
                             } else {
                                 player.teleport(playerTeleportLocation);
                             }

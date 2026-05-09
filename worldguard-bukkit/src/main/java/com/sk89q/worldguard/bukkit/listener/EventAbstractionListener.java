@@ -44,6 +44,7 @@ import com.sk89q.worldguard.bukkit.util.Blocks;
 import com.sk89q.worldguard.bukkit.util.Entities;
 import com.sk89q.worldguard.bukkit.util.Events;
 import com.sk89q.worldguard.bukkit.util.Materials;
+import com.sk89q.worldguard.bukkit.util.PaperInterop;
 import com.sk89q.worldguard.config.WorldConfiguration;
 import com.sk89q.worldguard.protection.flags.Flags;
 import io.papermc.lib.PaperLib;
@@ -1015,7 +1016,7 @@ public class EventAbstractionListener extends AbstractListener {
 
     @EventHandler(ignoreCancelled = true)
     public void onInventoryOpen(InventoryOpenEvent event) {
-        InventoryHolder holder = PaperLib.getHolder(event.getInventory(), false).getHolder();
+        InventoryHolder holder = PaperInterop.getHolder(event.getInventory(), false);
         if (holder instanceof Entity && holder == event.getPlayer()) return;
 
         handleInventoryHolderUse(event, create(event.getPlayer()), holder);
@@ -1024,7 +1025,7 @@ public class EventAbstractionListener extends AbstractListener {
     @EventHandler(ignoreCancelled = true)
     @SuppressWarnings({"rawtypes", "unchecked"})
     public void onInventoryMoveItem(InventoryMoveItemEvent event) {
-        InventoryHolder causeHolder = PaperLib.getHolder(event.getInitiator(), false).getHolder();
+        InventoryHolder causeHolder = PaperInterop.getHolder(event.getInitiator(), false);
 
         WorldConfiguration wcfg = null;
         if (causeHolder instanceof Hopper
@@ -1038,8 +1039,8 @@ public class EventAbstractionListener extends AbstractListener {
         Entry entry;
 
         if ((entry = moveItemDebounce.tryDebounce(event)) != null) {
-            InventoryHolder sourceHolder = PaperLib.getHolder(event.getSource(), false).getHolder();
-            InventoryHolder targetHolder = PaperLib.getHolder(event.getDestination(), false).getHolder();
+            InventoryHolder sourceHolder = PaperInterop.getHolder(event.getSource(), false);
+            InventoryHolder targetHolder = PaperInterop.getHolder(event.getDestination(), false);
 
             Cause cause;
 
