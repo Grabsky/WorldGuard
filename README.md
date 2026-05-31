@@ -13,3 +13,4 @@ Artifacts can be downloaded from **[GitHub Actions](https://github.com/Grabsky/W
 - Some spawn reasons are allowed when `mob-spawning` flag is set to `deny`.
 - Customized denied command message.
 - Removed checkstyle.
+- Removed deny / error messages.

@@ -432,7 +432,8 @@ public class WorldGuardPlayerListener extends AbstractListener {
             CommandFilter test = new CommandFilter(allowedCommands, blockedCommands);
 
             if (!test.apply(event.getMessage())) {
-                player.sendRichMessage("<dark_gray>› <red>Komenda <gold><command><red> nie może zostać użyta w tym miejscu.", Placeholder.unparsed("command", event.getMessage().split(" ")[0]));
+                String message = set.queryValue(localPlayer, Flags.DENY_MESSAGE);
+                RegionProtectionListener.formatAndSendDenyMessage("use " + event.getMessage(), localPlayer, message);
                 event.setCancelled(true);
                 return;
             }
