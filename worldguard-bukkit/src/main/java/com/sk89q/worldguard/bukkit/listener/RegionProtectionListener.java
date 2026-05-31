@@ -99,6 +99,7 @@ public class RegionProtectionListener extends AbstractListener {
      * @param what what was done
      */
     private void tellErrorMessage(DelegateEvent event, Cause cause, Location location, String what) {
+        if (true) return; // fork: disable deny messages
         if (event.isSilent() || cause.isIndirect()) {
             return;
         }
@@ -121,6 +122,7 @@ public class RegionProtectionListener extends AbstractListener {
     }
 
     static void formatAndSendDenyMessage(String what, LocalPlayer localPlayer, String message) {
+        if (true) return; // fork: disable deny messages
         if (message == null || message.isEmpty()) return;
         message = WorldGuard.getInstance().getPlatform().getMatcher().replaceMacros(localPlayer, message);
         message = CommandUtils.replaceColorMacros(message);
